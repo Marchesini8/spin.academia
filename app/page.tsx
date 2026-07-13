@@ -4,13 +4,15 @@ const whatsappUrl =
 const mapsUrl =
   "https://www.google.com/maps/search/?api=1&query=Spin+Academia+Rua+Ribeirao+Preto+350+Catanduva+SP";
 
+const instagramUrl = "https://www.instagram.com/spin_academia/";
+
 const activities = [
-  ["Musculação", "Força, saúde e evolução no seu ritmo.", "01"],
-  ["Pilates", "Mobilidade, postura e consciência corporal.", "02"],
-  ["Funcional", "Treinos dinâmicos para ganhar condicionamento.", "03"],
-  ["Dança & ritmos", "Ballet, sapateado e aulas cheias de energia.", "04"],
-  ["Infantil", "Movimento, coordenação e diversão para os pequenos.", "05"],
-  ["Skate", "Equilíbrio, confiança e novas habilidades.", "06"],
+  ["Musculação", "Força, saúde e evolução no seu ritmo.", "01", "🏋️"],
+  ["Pilates", "Mobilidade, postura e consciência corporal.", "02", "🧘"],
+  ["Funcional", "Treinos dinâmicos para ganhar condicionamento.", "03", "⚡"],
+  ["Dança & ritmos", "Ballet, sapateado e aulas cheias de energia.", "04", "💃"],
+  ["Infantil", "Movimento, coordenação e diversão para os pequenos.", "05", "🧗"],
+  ["Skate", "Equilíbrio, confiança e novas habilidades.", "06", "🛹"],
 ];
 
 const faqs = [
@@ -41,11 +43,7 @@ export default function Home() {
 
       <header className="site-header shell">
         <a className="brand" href="#inicio" aria-label="Spin Academia — início">
-          <span className="brand-mark">S</span>
-          <span>
-            <strong>SPIN</strong>
-            <small>ACADEMIA</small>
-          </span>
+          <span className="spin-logo"><strong>SPIN</strong><small>ACADEMIA</small></span>
         </a>
         <nav aria-label="Navegação principal">
           <a href="#modalidades">Modalidades</a>
@@ -53,7 +51,7 @@ export default function Home() {
           <a href="#contato">Contato</a>
         </nav>
         <a className="header-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
-          Agendar aula <span>↗</span>
+          <img src="/whatsapp.svg" alt="" /> Agendar aula <span>↗</span>
         </a>
       </header>
 
@@ -71,7 +69,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href={whatsappUrl} target="_blank" rel="noreferrer">
-              Quero uma aula experimental <span>↗</span>
+              <img className="button-icon" src="/whatsapp.svg" alt="" /> Quero uma aula experimental <span>↗</span>
             </a>
             <a className="text-link" href="#modalidades">Conhecer modalidades <span>↓</span></a>
           </div>
@@ -110,10 +108,10 @@ export default function Home() {
           <p>Escolha seu objetivo, experimente e conte com uma equipe atenciosa em cada etapa.</p>
         </div>
         <div className="activity-grid">
-          {activities.map(([title, text, number]) => (
+          {activities.map(([title, text, number, emoji]) => (
             <article className="activity-card" key={title}>
               <span className="activity-number">{number}</span>
-              <div className="activity-icon" aria-hidden="true">✦</div>
+              <div className="activity-icon" aria-hidden="true">{emoji}</div>
               <h3>{title}</h3>
               <p>{text}</p>
               <a href={whatsappUrl} target="_blank" rel="noreferrer" aria-label={`Perguntar sobre ${title}`}>Saiba mais <span>↗</span></a>
@@ -140,7 +138,7 @@ export default function Home() {
               <li><span>02</span> Estrutura para diferentes modalidades</li>
               <li><span>03</span> Comunidade que motiva e acolhe</li>
             </ul>
-            <a className="button button-light" href={whatsappUrl} target="_blank" rel="noreferrer">Conversar com a equipe <span>↗</span></a>
+            <a className="button button-light" href={whatsappUrl} target="_blank" rel="noreferrer"><img className="button-icon dark-icon" src="/whatsapp.svg" alt="" /> Conversar com a equipe <span>↗</span></a>
           </div>
         </div>
       </section>
@@ -210,24 +208,26 @@ export default function Home() {
           <span className="kicker light">SEU PRIMEIRO PASSO COMEÇA AQUI</span>
           <h2>Vamos encontrar a aula<br />certa para você?</h2>
           <p>Fale com a equipe e agende sua experiência na Spin Academia.</p>
-          <a className="button button-lime" href={whatsappUrl} target="_blank" rel="noreferrer">Agendar pelo WhatsApp <span>↗</span></a>
+          <a className="button button-lime" href={whatsappUrl} target="_blank" rel="noreferrer"><img className="button-icon dark-icon" src="/whatsapp.svg" alt="" /> Agendar pelo WhatsApp <span>↗</span></a>
         </div>
       </section>
 
       <footer className="site-footer">
         <div className="shell footer-grid">
           <a className="brand footer-brand" href="#inicio">
-            <span className="brand-mark">S</span>
-            <span><strong>SPIN</strong><small>ACADEMIA</small></span>
+            <span className="spin-logo"><strong>SPIN</strong><small>ACADEMIA</small></span>
           </a>
           <div><b>Visite</b><p>Rua Ribeirão Preto, 350<br />Vila Rodrigues · Catanduva/SP</p></div>
-          <div><b>Fale com a gente</b><p><a href="tel:+5517997736414">(17) 99773-6414</a><br /><a href="https://www.instagram.com/spin_academia/" target="_blank" rel="noreferrer">@spin_academia</a></p></div>
+          <div><b>Fale com a gente</b><p><a href="tel:+5517997736414">(17) 99773-6414</a></p><a className="instagram-link" href={instagramUrl} target="_blank" rel="noreferrer"><img src="/instagram.svg" alt="" /> @spin_academia</a></div>
         </div>
         <div className="shell footer-bottom"><span>© 2026 Spin Academia</span><span>Movimento transforma.</span></div>
       </footer>
 
-      <a className="mobile-sticky" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Agendar aula experimental pelo WhatsApp">
-        <span className="whatsapp-dot">●</span> Agendar aula experimental <b>↗</b>
+      <a className="floating-instagram" href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Abrir Instagram da Spin Academia">
+        <img src="/instagram.svg" alt="" />
+      </a>
+      <a className="floating-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Agendar aula experimental pelo WhatsApp">
+        <img src="/whatsapp.svg" alt="" /> <span>Agendar aula experimental</span> <b>↗</b>
       </a>
     </main>
   );

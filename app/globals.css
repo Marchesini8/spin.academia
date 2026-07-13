@@ -22,13 +22,15 @@ img { display: block; width: 100%; }
 .top-strip { min-height: 34px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 7px 20px; background: var(--purple-dark); color: white; font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; text-align: center; }
 .top-strip span { color: var(--lime); font-size: 8px; }
 .site-header { height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; line-height: .8; }
-.brand-mark { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--purple); color: white; font: italic 900 25px/1 Georgia, serif; transform: rotate(-7deg); }
-.brand strong { display: block; font-size: 22px; letter-spacing: -.06em; }
-.brand small { display: block; margin-top: 7px; color: var(--purple); font-size: 8px; letter-spacing: .24em; }
+.brand { display: inline-flex; align-items: center; line-height: .8; }
+.spin-logo { position: relative; min-width: 126px; display: inline-flex; align-items: baseline; gap: 7px; padding: 8px 12px 10px 15px; border-radius: 8px 19px 8px 19px; background: var(--purple); color: white; overflow: hidden; box-shadow: 0 5px 15px #6f1d9125; transform: skew(-5deg); }
+.spin-logo:after { content: ""; position: absolute; right: -12px; bottom: -18px; width: 52px; height: 52px; border: 3px solid var(--lime); border-radius: 50%; opacity: .65; }
+.spin-logo strong { position: relative; z-index: 1; font-size: 23px; line-height: 1; letter-spacing: -.08em; transform: skew(5deg); }
+.spin-logo small { position: relative; z-index: 1; font-size: 7px; line-height: 1; letter-spacing: .14em; transform: skew(5deg); }
 .site-header nav { display: flex; gap: 34px; font-size: 13px; font-weight: 700; }
 .site-header nav a:hover { color: var(--purple); }
 .header-cta { padding: 13px 18px; border: 1px solid var(--purple); color: var(--purple); font-size: 12px; font-weight: 800; border-radius: 999px; }
+.header-cta img { width: 16px; height: 16px; margin-right: 7px; padding: 2px; border-radius: 50%; background: #25d366; }
 .header-cta span, .button span, .activity-card a span { margin-left: 8px; }
 
 .hero { min-height: 690px; display: grid; grid-template-columns: .95fr 1.05fr; gap: 64px; align-items: center; padding-block: 58px 80px; }
@@ -40,6 +42,8 @@ h1 em, .experience-copy h2 em { color: var(--purple); font-weight: 400; }
 .hero-lead { max-width: 580px; margin: 28px 0 0; color: var(--muted); font-size: 17px; line-height: 1.65; }
 .hero-actions { display: flex; align-items: center; gap: 28px; margin-top: 32px; }
 .button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; padding: 14px 23px; border-radius: 999px; font-size: 13px; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease; }
+.button-icon { width: 19px; height: 19px; margin-right: 9px; }
+.dark-icon { padding: 2px; border-radius: 50%; background: #25d366; }
 .button:hover { transform: translateY(-2px); box-shadow: 0 12px 28px #2b07382e; }
 .button-primary { background: var(--purple); color: white; }
 .text-link { border-bottom: 1px solid currentColor; padding-bottom: 5px; font-size: 13px; font-weight: 800; }
@@ -74,8 +78,8 @@ h1 em, .experience-copy h2 em { color: var(--purple); font-weight: 400; }
 .activity-card { min-height: 285px; padding: 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .25s, color .25s, transform .25s; }
 .activity-card:hover { background: var(--purple); color: white; transform: translateY(-3px); }
 .activity-number { color: var(--muted); font: 11px/1 var(--font-geist-mono), monospace; }
-.activity-icon { width: 46px; height: 46px; display: grid; place-items: center; margin: 25px 0 18px; border: 1px solid var(--lilac); border-radius: 50%; color: var(--purple); font-size: 18px; }
-.activity-card:hover .activity-icon { color: var(--lime); border-color: #ffffff66; }
+.activity-icon { width: 54px; height: 54px; display: grid; place-items: center; margin: 25px 0 18px; border: 1px solid var(--lilac); border-radius: 50%; background: #f2e6f6; font-size: 25px; box-shadow: inset 0 0 0 5px #ffffff66; }
+.activity-card:hover .activity-icon { border-color: #ffffff66; background: #ffffff1a; box-shadow: none; transform: scale(1.08) rotate(-5deg); }
 .activity-card h3 { margin: 0 0 10px; font: 400 26px/1 Georgia, serif; }
 .activity-card p { min-height: 42px; margin: 0 0 20px; color: var(--muted); font-size: 13px; line-height: 1.55; }
 .activity-card:hover p, .activity-card:hover .activity-number { color: #eadff0; }
@@ -134,12 +138,20 @@ details p { margin: -5px 30px 22px 48px; color: var(--muted); font-size: 14px; l
 .button-lime { background: var(--lime); color: var(--purple-dark); }
 .site-footer { background: var(--purple-deep); color: white; padding: 60px 0 24px; }
 .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 50px; }
-.footer-brand .brand-mark { background: var(--lime); color: var(--purple-dark); }
-.footer-brand small { color: var(--lilac); }
+.footer-brand .spin-logo { background: var(--lime); color: var(--purple-dark); }
+.footer-brand .spin-logo:after { border-color: var(--purple); }
 .footer-grid b { color: var(--lilac); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
 .footer-grid p { color: #c9bdcd; font-size: 13px; line-height: 1.7; }
+.instagram-link { display: inline-flex; align-items: center; gap: 9px; color: white; font-size: 13px; font-weight: 700; }
+.instagram-link img { width: 19px; height: 19px; }
 .footer-bottom { display: flex; justify-content: space-between; margin-top: 50px; padding-top: 20px; border-top: 1px solid #ffffff20; color: #887b8d; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
-.mobile-sticky { display: none; }
+.floating-instagram, .floating-whatsapp { position: fixed; z-index: 50; display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 35px #16041d45; transition: transform .2s ease, box-shadow .2s ease; }
+.floating-instagram:hover, .floating-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 18px 42px #16041d55; }
+.floating-instagram { right: 24px; bottom: 92px; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+.floating-instagram img { width: 24px; height: 24px; }
+.floating-whatsapp { right: 24px; bottom: 25px; min-height: 56px; gap: 10px; padding: 13px 18px; border-radius: 999px; background: #25d366; color: #092d16; font-size: 13px; font-weight: 900; }
+.floating-whatsapp img { width: 24px; height: 24px; }
+.floating-whatsapp b { margin-left: 5px; }
 
 @media (max-width: 900px) {
   .site-header nav { display: none; }
@@ -159,9 +171,9 @@ details p { margin: -5px 30px 22px 48px; color: var(--muted); font-size: 14px; l
   .shell { width: min(100% - 32px, 560px); }
   .top-strip { font-size: 9px; }
   .site-header { height: 70px; }
-  .brand-mark { width: 36px; height: 36px; font-size: 21px; }
-  .brand strong { font-size: 18px; }
-  .brand small { font-size: 7px; }
+  .spin-logo { min-width: 116px; padding: 8px 10px 9px 13px; }
+  .spin-logo strong { font-size: 21px; }
+  .spin-logo small { font-size: 6px; }
   .header-cta { display: none; }
   .hero { min-height: auto; gap: 40px; padding: 42px 0 60px; }
   .eyebrow { font-size: 10px; }
@@ -211,9 +223,9 @@ details p { margin: -5px 30px 22px 48px; color: var(--muted); font-size: 14px; l
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { margin-top: 34px; }
   .site-footer { padding-bottom: 90px; }
-  .mobile-sticky { position: fixed; z-index: 50; left: 12px; right: 12px; bottom: 12px; min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 20px; border-radius: 999px; background: var(--lime); color: var(--purple-dark); font-size: 13px; font-weight: 900; box-shadow: 0 14px 35px #16041d4d; }
-  .mobile-sticky b { margin-left: auto; }
-  .whatsapp-dot { color: #25d366; }
+  .floating-instagram { right: 16px; bottom: 84px; width: 48px; height: 48px; }
+  .floating-whatsapp { left: 12px; right: 12px; bottom: 12px; min-height: 58px; padding: 14px 20px; }
+  .floating-whatsapp b { margin-left: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
